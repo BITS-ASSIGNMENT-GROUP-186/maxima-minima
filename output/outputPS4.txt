@@ -1,0 +1,4 @@
+decreasing 3
+increasing 3
+maxima 9
+minima 11
