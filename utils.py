@@ -52,21 +52,17 @@ class Utilities:
         return minimum, maximum
         
     def get_distribution_type(self, data):
-        self.minima, self.maxima = self.findMinAndMax(data=data, left=0, right=len(data) - 1, minimum=float('inf'), maximum=-float('inf'))
+        self.minima, self.maxima = self.findMinAndMax(data=data,
+                                                      left=0,
+                                                      right=len(data) - 1,
+                                                      minimum=float('inf'),
+                                                      maximum=-float('inf'))
 
         if data[0] < data[1]:
-            if data.index(self.maxima) == len(data) - 1:
-                return 'increasing'
-            else:
-                return 'maxima'
+            return 'increasing' if data.index(self.maxima) == len(data) - 1 else 'maxima'
         else:
-            if data.index(self.minima) == len(data) - 1:
-                return 'decreasing'
-            else:
-                return 'minima'
+            return 'decreasing' if data.index(self.minima) == len(data) - 1 else 'minima'
 
     def get_maxima_minima(self, distribution_type):
-        if distribution_type in ['increasing', 'decreasing', 'minima']:
-            return self.minima
-        else:
-            return self.maxima
+        return self.minima if distribution_type in ['increasing', 'decreasing', 'minima'] else self.maxima
+
