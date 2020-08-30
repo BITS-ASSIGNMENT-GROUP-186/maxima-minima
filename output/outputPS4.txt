@@ -1,4 +1,6 @@
-decreasing 3
 increasing 3
+decreasing 3
 maxima 9
 minima 11
+maxima 5
+minima 5
