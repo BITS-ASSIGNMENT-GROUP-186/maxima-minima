@@ -1,6 +1,14 @@
 increasing 3
 decreasing 3
 maxima 9
+Empty or invalid row entered 
 minima 11
+increasing 4
 maxima 5
+Single element entered : 3
+increasing 1
+Empty or invalid row entered 
 minima 5
+minima 5
+maxima 25
+Empty or invalid row entered 
