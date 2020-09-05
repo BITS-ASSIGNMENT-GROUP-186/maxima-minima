@@ -8,7 +8,7 @@ class Utilities:
     def create_list_from_input_data(self):
         """
         Method to hold input data read in data compound list
-        :return: None
+        :return: compound list which holds the list of integers
         """
         input_data_list = []
         for data in self.input_file:
@@ -26,7 +26,15 @@ class Utilities:
 
     # Divide & Conquer solution to find minimum and maximum number in data list
     def findMinAndMax(self, data, left, right, minimum, maximum):
-
+        """
+        Method to find maxima and minima from the given list of integers using divide and conquer strategy
+        :param data: input list
+        :param left: leftmost element of the list
+        :param right: rightmost element of the list
+        :param minimum: minimum elem of the list
+        :param maximum: maximum elem of the list
+        :return: minimum and maxima from the given list
+        """
         # if list contains only one element
         if left == right:  # common comparison
             if minimum > data[right]:  # comparison 1
@@ -47,6 +55,11 @@ class Utilities:
         return minimum, maximum
         
     def get_distribution_type(self, data):
+        """
+        Method to get the distribution type based on the list of integers indicating plot points
+        :param data: list of integers
+        :return: distribution type
+        """
         self.minima, self.maxima = self.findMinAndMax(data=data,
                                                       left=0,
                                                       right=len(data) - 1,
@@ -59,4 +72,9 @@ class Utilities:
             return 'decreasing' if data.index(self.minima) == len(data) - 1 else 'minima'
 
     def get_maxima_minima(self, distribution_type):
+        """
+        Method to return the minima or maxima based on given distribution type
+        :param distribution_type: distribution type
+        :return: Maxima or minima value in integer
+        """
         return self.minima if distribution_type in ['increasing', 'decreasing', 'minima'] else self.maxima
