@@ -9,6 +9,5 @@ Single element entered : 3
 increasing 1
 Empty or invalid row entered 
 minima 5
-minima 5
-maxima 25
+maxima 15
 Empty or invalid row entered 

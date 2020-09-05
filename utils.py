@@ -11,20 +11,16 @@ class Utilities:
         :return: None
         """
         input_data_list = []
-        childlist=[]
         for data in self.input_file:
-            if data!="\n":
-                childlist = []
-                ctr=0
+            if data != "\n":
+                row = []
                 for val in data.strip('\n').split(" "):
-                    if val.isnumeric():
-                        childlist.append(int(val))
-                    else:
-                        ctr+=1
-                if ctr>0:
-                    childlist=[]
-                input_data_list.append(childlist)
-            else :
+                    if not val.isnumeric():
+                        row = []
+                        break
+                    row.append(int(val))
+                input_data_list.append(row)
+            else:
                 input_data_list.append("")
         return input_data_list
 
@@ -38,20 +34,6 @@ class Utilities:
             if maximum < data[left]:  # comparison 2
                 maximum = data[left]
             return minimum, maximum
-
-        # if list contains only two elements
-        # if right - left == 1:  # common comparison
-        #     if data[left] < data[right]:  # comparison 1
-        #         if minimum > data[left]:  # comparison 2
-        #             minimum = data[left]
-        #         if maximum < data[right]:  # comparison 3
-        #             maximum = data[right]
-        #     else:
-        #         if minimum > data[right]:  # comparison 2
-        #             minimum = data[right]
-        #         if maximum < data[left]:  # comparison 3
-        #             maximum = data[left]
-        #     return minimum, maximum
 
         # find mid element
         mid = (left + right) // 2
@@ -72,16 +54,9 @@ class Utilities:
                                                       maximum=-float('inf'))
 
         if data[0] < data[1]:
-            if data.index(self.maxima) == len(data) - 1 :
-                return 'increasing', self.minima
-            else:
-                return 'maxima',self.maxima
+            return 'increasing' if data.index(self.maxima) == len(data) - 1 else 'maxima'
         else:
-            if data.index(self.minima) == len(data) - 1 :
-                return 'decreasing',self.minima
-            else:
-                return 'minima',self.minima
+            return 'decreasing' if data.index(self.minima) == len(data) - 1 else 'minima'
 
     def get_maxima_minima(self, distribution_type):
         return self.minima if distribution_type in ['increasing', 'decreasing', 'minima'] else self.maxima
-
